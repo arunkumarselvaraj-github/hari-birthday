@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+
+
+</head>
+<body>
+    <section style="background-color: #f4f4f4; font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center;">
+        <div style="display: flex; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 20px; width: 100%;">
+            <div style="flex: 1; padding: 10px;">
+                <div id="birthday-card" style="background-color: white; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); text-align: center; padding: 10px;">
+                    <div style="margin-bottom: 10px;">
+                        <h1 style="font-size: 24px; margin-bottom: 10px;">Happy Birthday</h1>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <img id="birthday-image" src="hari.jpg" alt="Birthday Photo" style="max-width: 70%; height: auto; border-radius: 5px; cursor: pointer;">
+                        <h3 style="font-size: 16px; line-height: 1.5;">Sending you an infinite amount of love, joy, and happiness on your birthday!</h3>
+                    </div>
+                </div>
+                <div id="wishes" style="display: none;">
+                    <p>Happy Birthday HARI.</p>
+                </div>
+            </div>
+    
+            <div style="flex: 2; padding: 10px;">
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="flex: 1; margin: 0 5px;">
+                        <div style="background-color: white; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); padding: 10px;">
+                            <img src="SOLO (36).jpg" alt="" style="max-width: 100%; border-radius: 5px;">
+                            <p style="font-size: 14px; margin-top: 10px;">Keep smiling, Keep shining</p>
+                        </div>
+                    </div>
+                    <div style="flex: 1; margin: 0 5px;">
+                        <div style="background-color: white; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); padding: 10px;">
+                            <img src="SOLO (112).jpg" alt="" style="max-width: 100%; border-radius: 5px;">
+                            <p style="font-size: 14px; margin-top: 10px;">On this occasion, bring you a lot of happiness and success</p>
+                        </div>
+                    </div>
+                    <div style="flex: 1; margin: 0 5px;">
+                        <div style="background-color: white; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); padding: 10px;">
+                            <img src="SOLO (49).jpg" alt="" style="max-width: 100%; border-radius: 5px;">
+                            <p style="font-size: 14px; margin-top: 10px;">May God bless you on your birthday and always</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    <section class="container2">
+        <div style="display: flex; justify-content: space-between; padding: 20px;">
+
+            <!-- Brother Photos -->
+            <div style="flex: 1; padding: 10px;">
+                <div style="background-color: #e4d610; padding: 40px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; max-width: 500px;">
+                    <h1 style="font-size: 20px; margin-bottom: 15px; color: #333; font-family: 'Pacifico', cursive;">Celebrating You, Our Amazing Brother</h1>
+                 <ul style="list-style: none; padding: 0; text-align: left;">
+                        <li style="font-size: 12px; line-height: 1.6; color: #333; margin-bottom: 15px;font-family: 'Pacifico';">Happy Birthday, dear brother! As we mark another year in your journey, we reflect on the wonderful memories we've created together.</li>
+                    </ul>
+                    <button style="background-color: #5cb85c; color: white; padding: 6px 12px; border: none; border-radius: 2px; cursor: pointer; font-size: 12px; transition: background-color 0.3s ease; margin-top: 20px; animation: pulse 2s infinite;" onclick="displayFileInIframe()">
+                        Show Birthday Gift
+                    </button>
+                    <p style="font-size: 12px; line-height: 1.6; color: #333; margin-top: 20px;font-family: 'Pacifico';">Wishing you a day filled with happiness and a year ahead full of exciting adventures!</p>
+                </div>
+            </div>
+            
+            <style>
+                @keyframes pulse {
+                    0% { transform: scale(4); }
+                    50% { transform: scale(5.05); }
+                    100% { transform: scale(3); }
+                }
+            </style>
+            
+            <div style="flex: 1; padding: 10px;">
+                <div style="background-color: #0e2df4; padding: 40px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; max-width: 500px;">
+                    <h1 style="font-size: 20px; margin-bottom: 15px; color: #333; font-family: 'Pacifico', cursive;">Celebrating You, Our Amazing Brother</h1>
+                 <ul style="list-style: none; padding: 0; text-align: left;">
+                        <li style="font-size: 12px; line-height: 1.6; color: #333; margin-bottom: 15px;font-family: 'Pacifico';">Happy Birthday, dear brother! As we mark another year in your journey, we reflect on the wonderful memories we've created together.</li>
+                    </ul>
+                    <button style="background-color: #5cb85c; color: white; padding: 6px 12px; border: none; border-radius: 2px; cursor: pointer; font-size: 12px; transition: background-color 0.3s ease; margin-top: 20px; animation: pulse 2s infinite;" onclick="displayFileInIframe2()">
+                        Show Birthday Gift
+                    </button>
+                    <p style="font-size: 12px; line-height: 1.6; color: #333; margin-top: 20px;font-family: 'Pacifico';">Wishing you a day filled with happiness and a year ahead full of exciting adventures!</p>
+                </div>
+            </div>
+            
+            <style>
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                    100% { transform: scale(1); }
+                }
+            </style>
+            
+        
+        
+        </div>
+        
+    
+
+    <iframe id="fileIframe" style="display: none;"></iframe><br>
+    <iframe id="fileIframe2" style="display: none;"></iframe>
+   
+
+    <script>
+        function displayFileInIframe() {
+            // Replace 'your-file-url.ext' with the actual URL of the file you want to display
+            var fileUrl = 'index2.html';
+            var iframe = document.getElementById('fileIframe');
+            
+            // Set the 'src' attribute of the iframe to the file URL
+            iframe.src = fileUrl;
+
+            // Show the iframe
+            iframe.style.display = 'block';
+        }
+        function displayFileInIframe2() {
+            // Replace 'your-file-url.ext' with the actual URL of the file you want to display
+            var fileUrl2 = 'index3.html';
+            var iframe2 = document.getElementById('fileIframe2');
+            
+            // Set the 'src' attribute of the iframe to the file URL
+            iframe2.src = fileUrl2;
+
+            // Show the iframe
+            iframe2.style.display = 'block';
+        }
+
+      
+    </script>
+      </section>
+
+      
+      <section class="container3">
+        <iframe id="fileIframe1" style="display: none;"></iframe>
+    </section>
+    
+    <script>
+        window.addEventListener('load', function() {
+            displayFileInIframe1();
+        });
+    
+        function displayFileInIframe1() {
+            // Replace 'your-file-url.ext' with the actual URL of the file you want to display
+            var fileUrl1 = 'CARD/index.html';
+            var iframe1 = document.getElementById('fileIframe1');
+    
+            // Set the 'src' attribute of the iframe to the file URL
+            iframe1.src = fileUrl1;
+    
+            // Show the iframe
+            iframe1.style.display = 'block';
+        }
+    </script>
+    <br>
+    
+</body>
+</html>

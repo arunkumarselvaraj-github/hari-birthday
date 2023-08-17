@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+    <meta name="viewport" content="width=1100">
+    <style>
+        html, body {
+          font-size: 50%;
+        }
+    
+        body {
+          padding: 0;
+          margin: 0;
+          background-color: floralwhite;
+          font-family: 'Karla', sans-serif;
+      }
+      .gallery-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        width: 100vw;
+        height: 100vh;
+        background-color: #f0f0f0; /* Optional background color */
+    }
+    
+    
+    .gallery-item {
+        flex: 0 0 150px;
+        height: 200px;
+        padding: 10px;
+        box-sizing: border-box;
+        box-shadow: 0 4px 8px rgba(10, 190, 43, 0.1); /* Add a subtle shadow */
+        border-radius: 8px; /* Add border radius for a more rounded look */
+        margin: 10px; /* Add some space between the gallery items */
+        background-color: #e96d0f; /* Add a beautiful background color */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .gallery-item img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 8px; /* Apply the same border radius to the image */
+    }
+    
+    
+    
+    
+      
+  
+        
+  
+          .slider-container {
+              height: 600px;
+              width: 80%;
+              margin: 50px auto;
+              position: relative;
+              overflow: hidden;
+          }
+  
+          .slider {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              transition: transform 0.5s ease-in-out;
+          }
+  
+          .slide {
+              flex: 0 0 100%;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: relative;
+              overflow: hidden;
+              opacity: 1;
+              transition: opacity 0.5s ease-in-out;
+              transform: scale(1);
+              cursor: pointer;
+              animation: zoomOut 2s infinite;
+          }
+  
+          .slide img {
+              max-height: 100%;
+              max-width: 100%;
+              object-fit: contain;
+              transition: transform 0.5s ease-in-out;
+          }
+  
+          .slide.hidden {
+              opacity: 0;
+          }
+  
+          .slide:hover img {
+              transform: scale(0.9);
+          }
+  
+          .slide-overlay {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.4);
+              z-index: 1;
+              opacity: 0;
+              transition: opacity 0.3s ease-in-out;
+          }
+  
+          .slide:hover .slide-overlay {
+              opacity: 1;
+          }
+  
+          .slide-content {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              color: #fff;
+              text-align: center;
+              opacity: 0;
+              transition: opacity 0.3s ease-in-out;
+          }
+  
+          .slide:hover .slide-content {
+              opacity: 1;
+          }
+  
+          .timing {
+              position: absolute;
+              bottom: 10px;
+              right: 10px;
+              color: #bde207;
+              font-size: 14px;
+          }
+  
+          h1 {
+              margin-top: 50px;
+              text-align: center;
+              font-size: 60px;
+              font-weight: lighter;
+          }
+  
+          @keyframes zoomOut {
+              0% {
+                  transform: scale(1);
+              }
+              50% {
+                  transform: scale(1.1);
+              }
+              100% {
+                  transform: scale(1);
+              }
+          }
+  
+          /* Style for the full-screen view */
+  .fullscreen-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .fullscreen-view img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  /* Hide the full-screen view by default */
+  .fullscreen-view.hidden {
+    display: none;
+  }
+  
+      </style>
+</head>
+<body>
+
+<div class="gallery-container">
+<div class="gallery-item">
+  <img src="friends/SOLO (1).jpg" alt="friends/SOLO(1)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (2).jpg" alt="friends/SOLO(2)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (3).jpg" alt="friends/SOLO(3)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (4).jpg" alt="friends/SOLO(4)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (5).jpg" alt="friends/SOLO(5)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (6).jpg" alt="friends/SOLO(6)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (7).jpg" alt="friends/SOLO(7)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (8).jpg" alt="friends/SOLO(8)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (9).jpg" alt="friends/SOLO(9)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (10).jpg" alt="friends/SOLO(10)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (11).jpg" alt="friends/SOLO(11)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (12).jpg" alt="friends/SOLO(12)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (13).jpg" alt="friends/SOLO(13)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (14).jpg" alt="friends/SOLO(14)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (15).jpg" alt="friends/SOLO(15)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (16).jpg" alt="friends/SOLO(16)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (17).jpg" alt="friends/SOLO(17)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (18).jpg" alt="friends/SOLO(18)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (19).jpg" alt="friends/SOLO(19)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (20).jpg" alt="friends/SOLO(20)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (21).jpg" alt="friends/SOLO(21)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (22).jpg" alt="friends/SOLO(22)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (23).jpg" alt="friends/SOLO(23)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (24).jpg" alt="friends/SOLO(24)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (25).jpg" alt="friends/SOLO(25)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (26).jpg" alt="friends/SOLO(26)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (27).jpg" alt="friends/SOLO(27)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (28).jpg" alt="friends/SOLO(28)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (29).jpg" alt="friends/SOLO(29)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (30).jpg" alt="friends/SOLO(30)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (31).jpg" alt="friends/SOLO(31)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (32).jpg" alt="friends/SOLO(32)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (33).jpg" alt="friends/SOLO(33)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (34).jpg" alt="friends/SOLO(34)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (35).jpg" alt="friends/SOLO(35)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (36).jpg" alt="friends/SOLO(36)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (37).jpg" alt="friends/SOLO(37)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (38).jpg" alt="friends/SOLO(38)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (39).jpg" alt="friends/SOLO(39)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (40).jpg" alt="friends/SOLO(40)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (41).jpg" alt="friends/SOLO(41)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (42).jpg" alt="friends/SOLO(42)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (43).jpg" alt="friends/SOLO(43)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (44).jpg" alt="friends/SOLO(44)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (45).jpg" alt="friends/SOLO(45)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (46).jpg" alt="friends/SOLO(46)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (47).jpg" alt="friends/SOLO(47)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (48).jpg" alt="friends/SOLO(48)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (49).jpg" alt="friends/SOLO(49)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (50).jpg" alt="friends/SOLO(50)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (51).jpg" alt="friends/SOLO(51)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (52).jpg" alt="friends/SOLO(52)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (53).jpg" alt="friends/SOLO(53)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (54).jpg" alt="friends/SOLO(54)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (55).jpg" alt="friends/SOLO(55)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (56).jpg" alt="friends/SOLO(56)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (57).jpg" alt="friends/SOLO(57)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (58).jpg" alt="friends/SOLO(58)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (59).jpg" alt="friends/SOLO(59)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (60).jpg" alt="friends/SOLO(60)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (61).jpg" alt="friends/SOLO(61)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (62).jpg" alt="friends/SOLO(62)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (63).jpg" alt="friends/SOLO(63)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (64).jpg" alt="friends/SOLO(64)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (65).jpg" alt="friends/SOLO(65)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (66).jpg" alt="friends/SOLO(66)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (67).jpg" alt="friends/SOLO(67)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (68).jpg" alt="friends/SOLO(68)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (69).jpg" alt="friends/SOLO(69)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (70).jpg" alt="friends/SOLO(70)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (71).jpg" alt="friends/SOLO(71)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (72).jpg" alt="friends/SOLO(72)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (73).jpg" alt="friends/SOLO(73)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (74).jpg" alt="friends/SOLO(74)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (75).jpg" alt="friends/SOLO(75)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (76).jpg" alt="friends/SOLO(76)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (77).jpg" alt="friends/SOLO(77)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (78).jpg" alt="friends/SOLO(78)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (79).jpg" alt="friends/SOLO(79)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (80).jpg" alt="friends/SOLO(80)" onclick="openFullScreen(this)">
+</div>
+
+<div class="gallery-item">
+  <img src="friends/SOLO (81).jpg" alt="friends/SOLO(81)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (82).jpg" alt="friends/SOLO(82)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (83).jpg" alt="friends/SOLO(83)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (84).jpg" alt="friends/SOLO(84)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (85).jpg" alt="friends/SOLO(85)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (86).jpg" alt="friends/SOLO(86)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (87).jpg" alt="friends/SOLO(87)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (88).jpg" alt="friends/SOLO(88)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (89).jpg" alt="friends/SOLO(89)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (90).jpg" alt="friends/SOLO(90)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (91).jpg" alt="friends/SOLO(91)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (92).jpg" alt="friends/SOLO(92)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (93).jpg" alt="friends/SOLO(93)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (94).jpg" alt="friends/SOLO(94)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (95).jpg" alt="friends/SOLO(95)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (96).jpg" alt="friends/SOLO(96)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (97).jpg" alt="friends/SOLO(97)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (98).jpg" alt="friends/SOLO(98)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (99).jpg" alt="friends/SOLO(99)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (100).jpg" alt="friends/SOLO(100)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (101).jpg" alt="friends/SOLO(101)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (102).jpg" alt="friends/SOLO(102)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (103).jpg" alt="friends/SOLO(103)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (104).jpg" alt="friends/SOLO(104)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (105).jpg" alt="friends/SOLO(105)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (106).jpg" alt="friends/SOLO(106)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (107).jpg" alt="friends/SOLO(107)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (108).jpg" alt="friends/SOLO(108)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (109).jpg" alt="friends/SOLO(109)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (110).jpg" alt="friends/SOLO(110)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (111).jpg" alt="friends/SOLO(111)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (112).jpg" alt="friends/SOLO(112)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (113).jpg" alt="friends/SOLO(113)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (114).jpg" alt="friends/SOLO(114)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (115).jpg" alt="friends/SOLO(115)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (116).jpg" alt="friends/SOLO(116)" onclick="openFullScreen(this)">
+</div>
+
+<div class="gallery-item">
+  <img src="friends/SOLO (117).jpg" alt="friends/SOLO(117)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (118).jpg" alt="friends/SOLO(118)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (119).jpg" alt="friends/SOLO(119)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (120).jpg" alt="friends/SOLO(120)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (121).jpg" alt="friends/SOLO(121)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (122).jpg" alt="friends/SOLO(122)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (123).jpg" alt="friends/SOLO(123)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (124).jpg" alt="friends/SOLO(124)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (125).jpg" alt="friends/SOLO(125)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (126).jpg" alt="friends/SOLO(126)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (127).jpg" alt="friends/SOLO(127)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (128).jpg" alt="friends/SOLO(128)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (129).jpg" alt="friends/SOLO(129)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (130).jpg" alt="friends/SOLO(130)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (131).jpg" alt="friends/SOLO(131)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (132).jpg" alt="friends/SOLO(132)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (133).jpg" alt="friends/SOLO(133)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (134).jpg" alt="friends/SOLO(134)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (135).jpg" alt="friends/SOLO(135)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (136).jpg" alt="friends/SOLO(136)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (137).jpg" alt="friends/SOLO(137)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (138).jpg" alt="friends/SOLO(138)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (139).jpg" alt="friends/SOLO(139)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (140).jpg" alt="friends/SOLO(140)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (141).jpg" alt="friends/SOLO(141)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (142).jpg" alt="friends/SOLO(142)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (143).jpg" alt="friends/SOLO(143)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (144).jpg" alt="friends/SOLO(144)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (145).jpg" alt="friends/SOLO(145)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (146).jpg" alt="friends/SOLO(146)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (147).jpg" alt="friends/SOLO(147)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (148).jpg" alt="friends/SOLO(148)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (149).jpg" alt="friends/SOLO(149)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (150).jpg" alt="friends/SOLO(150)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (151).jpg" alt="friends/SOLO(151)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (152).jpg" alt="friends/SOLO(152)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (153).jpg" alt="friends/SOLO(153)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (154).jpg" alt="friends/SOLO(154)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (155).jpg" alt="friends/SOLO(155)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (156).jpg" alt="friends/SOLO(156)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (157).jpg" alt="friends/SOLO(157)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (158).jpg" alt="friends/SOLO(158)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (159).jpg" alt="friends/SOLO(159)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (160).jpg" alt="friends/SOLO(160)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (161).jpg" alt="friends/SOLO(161)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (162).jpg" alt="friends/SOLO(162)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (163).jpg" alt="friends/SOLO(163)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (164).jpg" alt="friends/SOLO(164)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (165).jpg" alt="friends/SOLO(165)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (166).jpg" alt="friends/SOLO(166)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (167).jpg" alt="friends/SOLO(167)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (168).jpg" alt="friends/SOLO(168)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (169).jpg" alt="friends/SOLO(169)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (170).jpg" alt="friends/SOLO(170)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (171).jpg" alt="friends/SOLO(171)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (172).jpg" alt="friends/SOLO(172)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (173).jpg" alt="friends/SOLO(173)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (174).jpg" alt="friends/SOLO(174)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (175).jpg" alt="friends/SOLO(175)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (176).jpg" alt="friends/SOLO(176)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (177).jpg" alt="friends/SOLO(177)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (178).jpg" alt="friends/SOLO(178)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (179).jpg" alt="friends/SOLO(179)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (180).jpg" alt="friends/SOLO(180)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (181).jpg" alt="friends/SOLO(181)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (182).jpg" alt="friends/SOLO(182)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (183).jpg" alt="friends/SOLO(183)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (184).jpg" alt="friends/SOLO(184)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (185).jpg" alt="friends/SOLO(185)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (186).jpg" alt="friends/SOLO(186)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (187).jpg" alt="friends/SOLO(187)" onclick="openFullScreen(this)">
+</div>
+<div class="gallery-item">
+  <img src="friends/SOLO (188).jpg" alt="friends/SOLO(188)" onclick="openFullScreen(this)">
+</div>
+
+
+</div>
+
+
+<script>
+  function openFullScreen(image) {
+    // Create a new full-screen view element
+    var fullscreenView = document.createElement("div");
+    fullscreenView.classList.add("fullscreen-view");
+  
+    // Create an image element inside the full-screen view
+    var fullscreenImage = document.createElement("img");
+    fullscreenImage.src = image.src;
+    fullscreenImage.alt = image.alt;
+    
+    // Append the image to the full-screen view
+    fullscreenView.appendChild(fullscreenImage);
+  
+    // Add the full-screen view to the document body
+    document.body.appendChild(fullscreenView);
+  
+    // Close the full-screen view when clicked
+    fullscreenView.onclick = function() {
+      document.body.removeChild(fullscreenView);
+    };
+  }
+  
+</script>
+ 
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <img src="ai.jpg" alt="Slide 1">
+                <div class="slide-overlay"></div>
+                <span class="timing"></span>
+            </div>
+            <div class="slide">
+                <img src="ai.jpg" alt="Slide 2">
+                <div class="slide-overlay"></div>
+                <span class="timing"></span>
+            </div>
+            <div class="slide">
+                <img src="ai.jpg" alt="Slide 3">
+                <div class="slide-overlay"></div>
+                <span class="timing"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
